@@ -4,11 +4,11 @@ import css from "./NotePreview.module.css";
 import { fetchNoteById } from "@/lib/api";
 import { useQuery } from "@tanstack/react-query";
 
-interface NoteDetailsClientProps {
+interface NotePreviewClientProps {
   id: string;
 }
 
-function NoteDetailsClient({ id }: NoteDetailsClientProps) {
+function NotePreviewClient({ id }: NotePreviewClientProps) {
   const { data, isLoading, error } = useQuery({
     queryKey: ["note", id],
     queryFn: () => fetchNoteById(id),
@@ -32,4 +32,4 @@ function NoteDetailsClient({ id }: NoteDetailsClientProps) {
   );
 }
 
-export default NoteDetailsClient;
+export default NotePreviewClient;

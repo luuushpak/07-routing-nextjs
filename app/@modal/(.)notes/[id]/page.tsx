@@ -1,6 +1,6 @@
 import { fetchNoteById } from "@/lib/api";
 import Modal from "@/components/Modal/Modal";
-import NoteDetailsClient from "@/app/@modal/(.)notes/[id]/NoteDetails.client";
+import NotePreviewClient from "@/app/@modal/(.)notes/[id]/NotePreview.client";
 import {
   QueryClient,
   dehydrate,
@@ -24,7 +24,7 @@ async function NotePreview({ params }: NotePreviewProps) {
   return (
     <Modal>
       <HydrationBoundary state={dehydrate(queryClient)}>
-        <NoteDetailsClient id={id} />
+        <NotePreviewClient id={id} />
       </HydrationBoundary>
     </Modal>
   );
