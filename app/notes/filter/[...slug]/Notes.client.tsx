@@ -71,7 +71,7 @@ function NotesClient({ tag }: NotesClientProps) {
         <EmptyNotesMessage />
       )}
       {isModal && (
-        <Modal>
+        <Modal handleCloseModal={handleCloseModal}>
           <NoteForm handleCloseModal={handleCloseModal} />
         </Modal>
       )}
