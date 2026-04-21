@@ -1,6 +1,6 @@
 import { fetchNoteById } from "@/lib/api";
 import Modal from "@/components/Modal/Modal";
-import NoteDetailsClient from "@/components/NoteDetails/NoteDetails.client";
+import NoteDetailsClient from "@/app/@modal/(.)notes/[id]/NoteDetails.client";
 import {
   QueryClient,
   dehydrate,
