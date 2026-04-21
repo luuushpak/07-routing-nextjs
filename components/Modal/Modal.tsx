@@ -1,29 +1,33 @@
+"use client";
+
 import { createPortal } from "react-dom";
 import { useEffect } from "react";
+import { useRouter } from "next/navigation";
 import css from "./Modal.module.css";
 
 interface ModalProps {
   children: React.ReactNode;
-  handleCloseModal: () => void;
 }
 
-export default function Modal({ children, handleCloseModal }: ModalProps) {
+export default function Modal({ children }: ModalProps) {
+  const router = useRouter();
+
   const handleBackdrop = (event: React.MouseEvent<HTMLDivElement>) => {
     if (event.target === event.currentTarget) {
-      handleCloseModal();
+      router.back();
     }
   };
 
   useEffect(() => {
     const handleEscape = (event: KeyboardEvent) => {
-      if (event.key === "Escape") handleCloseModal();
+      if (event.key === "Escape") router.back();
     };
     document.addEventListener("keydown", handleEscape);
 
     return () => {
       document.removeEventListener("keydown", handleEscape);
     };
-  }, [handleCloseModal]);
+  }, [router]);
 
   useEffect(() => {
     document.body.style.overflow = "hidden";
@@ -31,7 +35,7 @@ export default function Modal({ children, handleCloseModal }: ModalProps) {
     return () => {
       document.body.style.overflow = "";
     };
-  });
+  }, []);
 
   return createPortal(
     <div
